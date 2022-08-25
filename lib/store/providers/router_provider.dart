@@ -25,15 +25,15 @@ class RouterNotifier extends ChangeNotifier {
   }
 
   String? _redirectLogic(GoRouterState state) {
-    // final loginState = _ref.read(loginControllerProvider);
+    final loginState = _ref.read(loginControllerProvider);
 
-    // final areWeLoggingIn = state.location == '/login';
+    final areWeLoggingIn = state.location == '/login';
 
-    // if (loginState is LoginStateInitial || loginState is LoginStateError) {
-    //   return areWeLoggingIn ? null : '/login';
-    // }
+    if (loginState is LoginStateInitial || loginState is LoginStateError) {
+      return areWeLoggingIn ? null : '/login';
+    }
 
-    // if (areWeLoggingIn) return '/';
+    if (areWeLoggingIn) return '/';
 
     return null;
   }

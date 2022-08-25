@@ -1,7 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/arcticons.dart';
 import 'package:iconify_flutter/icons/iconoir.dart';
+import 'package:iconify_flutter/icons/jam.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/icons/ic.dart';
 import 'package:hsssiot/screens/screens.dart';
@@ -17,7 +19,8 @@ class _DashBoardState extends State<DashBoard> {
   final List _screens = [
     GasSensor(),
     ProximitySensor(),
-    GasSensor(),
+    VibrationSensor(),
+    DeviceManagement(),
     Profile(),
   ];
   int _page = 0;
@@ -40,6 +43,11 @@ class _DashBoardState extends State<DashBoard> {
           ),
           Iconify(
             Ic.round_do_not_touch,
+            size: 30.0,
+            color: Colors.white,
+          ),
+          Iconify(
+            Jam.switch_left,
             size: 30.0,
             color: Colors.white,
           ),

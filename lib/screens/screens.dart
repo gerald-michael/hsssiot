@@ -9,3 +9,4 @@ export './household.dart';
 export './gas_sensor.dart';
 export './proximity_sensor.dart';
 export './vibration_sensor.dart';
+export './device_management.dart';
