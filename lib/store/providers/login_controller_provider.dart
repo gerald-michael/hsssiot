@@ -3,6 +3,8 @@ import 'package:hsssiot/store/states/login_states.dart';
 import 'package:hsssiot/store/repository/auth_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../models/models.dart';
+
 class LoginController extends StateNotifier<LoginState> {
   LoginController(this.ref) : super(const LoginStateInitial());
 
@@ -13,13 +15,14 @@ class LoginController extends StateNotifier<LoginState> {
 
     try {
       await ref.read(authRepositoryProvider).login(email, password);
-      print('success');
       state = const LoginStateSuccess();
     } on DioError catch (e) {
-      print("error in controller");
-      print(e.response);
       state = LoginStateError(e.toString());
     }
+  }
+
+  Token? getCurrentUser() {
+    return ref.read(authRepositoryProvider).currentUser;
   }
 }
 

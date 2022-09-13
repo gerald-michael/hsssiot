@@ -3,7 +3,4 @@ export './profile_list_item.dart';
 export './text_field.dart';
 export './slider_item.dart';
 export './custom_drawer.dart';
-export './category_list.dart';
 export './search_box.dart';
-export './chat_and_add_to_cart.dart';
-export './tree_image.dart';

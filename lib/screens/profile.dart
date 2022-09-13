@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
+import 'package:hsssiot/screens/screens.dart';
+import 'package:hsssiot/store/providers/login_controller_provider.dart';
 import 'package:hsssiot/widgets/widgets.dart';
 import 'package:hsssiot/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends ConsumerWidget {
   const Profile({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // ScreenUtil.init(
     //   BoxConstraints(
     //       maxWidth: MediaQuery.of(context).size.width,
@@ -121,31 +125,39 @@ class Profile extends StatelessWidget {
               children: <Widget>[
                 header,
                 Column(
-                  children: const [
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.user_shield,
-                      text: 'Privacy',
-                      hasNavigation: true,
-                    ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.question_circle,
-                      text: 'Help & Support',
-                      hasNavigation: true,
-                    ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.cog,
-                      text: 'Settings',
-                      hasNavigation: true,
-                    ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.user_plus,
-                      text: 'Invite a Friend',
-                      hasNavigation: true,
-                    ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.alternate_sign_out,
-                      text: 'Logout',
-                      hasNavigation: false,
+                  children: [
+                    // ProfileListItem(
+                    //   icon: LineAwesomeIcons.user_shield,
+                    //   text: 'Privacy',
+                    //   hasNavigation: true,
+                    // ),
+                    // ProfileListItem(
+                    //   icon: LineAwesomeIcons.question_circle,
+                    //   text: 'Help & Support',
+                    //   hasNavigation: true,
+                    // ),
+                    // ProfileListItem(
+                    //   icon: LineAwesomeIcons.cog,
+                    //   text: 'Settings',
+                    //   hasNavigation: true,
+                    // ),
+                    // ProfileListItem(
+                    //   icon: LineAwesomeIcons.user_plus,
+                    //   text: 'Invite a Friend',
+                    //   hasNavigation: true,
+                    // ),
+                    GestureDetector(
+                      child: ProfileListItem(
+                        icon: LineAwesomeIcons.alternate_sign_out,
+                        text: 'Logout',
+                        hasNavigation: false,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
+                      },
                     ),
                   ],
                 ),

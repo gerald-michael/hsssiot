@@ -1,11 +1,16 @@
+import 'package:hive/hive.dart';
 import 'package:hsssiot/store/models/models.dart';
+part 'token.g.dart';
 
-class Token {
-  final String key;
+@HiveType(typeId: 2, adapterName: "TokenAdapter")
+class Token extends HiveObject {
+  @HiveField(0)
+  final String token;
+  @HiveField(1)
   final User user;
 
   Token({
-    required this.key,
+    required this.token,
     required this.user,
   });
   @override
@@ -18,6 +23,6 @@ class Token {
   int get hashCode => key.hashCode ^ user.hashCode;
 
   Token.fromJson(Map<String, dynamic> parsedJson)
-      : key = parsedJson['key'],
+      : token = parsedJson['key'],
         user = User.fromJson(parsedJson['user']);
 }
